@@ -1,0 +1,62 @@
+#include "resource.h"
+#include <winres.h>
+
+#pragma code_page(65001)
+
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+
+IDD_OPTIONS_DIALOG DIALOGEX 0, 0, 238, 151
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "DeepSeek 余额监控设置"
+FONT 9, "Microsoft YaHei UI", 400, 0, 0x1
+BEGIN
+    LTEXT           "DeepSeek API Key：",IDC_STATIC,12,16,66,10
+    EDITTEXT        IDC_API_KEY_EDIT,80,14,146,14,ES_AUTOHSCROLL | ES_PASSWORD
+    CONTROL         "显示 API Key",IDC_SHOW_KEY_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,80,32,72,10
+
+    LTEXT           "轮询间隔（秒）：",IDC_STATIC,12,57,66,10
+    EDITTEXT        IDC_INTERVAL_EDIT,80,55,66,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_INTERVAL_SPIN,"msctls_updown32",UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_SETBUDDYINT | UDS_AUTOBUDDY,146,55,15,14
+    LTEXT           "范围 10 - 86400",IDC_STATIC,166,57,60,10
+
+    LTEXT           "显示币种：",IDC_STATIC,12,82,66,10
+    COMBOBOX        IDC_CURRENCY_COMBO,80,80,101,64,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "API Key 使用当前 Windows 用户的 DPAPI 加密后保存在插件配置目录。",IDC_STATIC,12,108,214,20
+
+    DEFPUSHBUTTON   "确定",IDOK,125,130,50,14
+    PUSHBUTTON      "取消",IDCANCEL,181,130,50,14
+END
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "928475053"
+            VALUE "FileDescription", "DeepSeek balance monitor plugin for TrafficMonitor"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "DeepSeekUsagePlugin.dll"
+            VALUE "LegalCopyright", "Copyright (C) 2026 928475053"
+            VALUE "OriginalFilename", "DeepSeekUsagePlugin.dll"
+            VALUE "ProductName", "DeepSeek Usage Plugin for TrafficMonitor"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
